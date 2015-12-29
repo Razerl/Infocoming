@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.uni.infocoming.activity.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/login" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00ffff"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_login_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:singleLine="true"
+                android:hint="账号"
+                android:background="@null"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/transparent"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ffff"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_login_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="密码"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_login_certification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校园认证"
+            android:layout_marginTop="32dp"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="@color/md_blue_800"/>
+
+        <Button
+            android:id="@+id/btn_login_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/md_grey_600"
+            android:background="@color/button_green"
+            android:text="登录"/>
+    </LinearLayout>
+
+</RelativeLayout>

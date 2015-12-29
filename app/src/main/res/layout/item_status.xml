@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_status_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gray2dark_sel"
+    android:orientation="vertical"
+    android:elevation="4dp">
+
+    <include layout="@layout/include_avatar" />
+
+    <TextView
+        android:id="@+id/tv_status_content"
+        style="@style/TextViewBody"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-16dp"
+        android:padding="16dp"
+        android:text="今天三里屯juice见" />
+
+    <include
+        android:id="@+id/include_status_image"
+        layout="@layout/include_status_image"
+        android:visibility="gone" />
+
+    <com.uni.infocoming.widget.WrapHeightListView
+        android:id="@+id/lv_comment"
+        style="@style/ListViewCommon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_comment"/>
+</LinearLayout>

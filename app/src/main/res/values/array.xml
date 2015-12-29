@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="duties">
+    <item>无</item>
+    <item>班长</item>
+    <item>团支书</item>
+    <item>学习委员</item>
+    <item>生活委员</item>
+    <item>文艺委员</item>
+    <item>课代表</item>
+    <item>其他</item>
+    </string-array>
+</resources>

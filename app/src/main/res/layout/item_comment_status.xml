@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:id="@+id/ll_comment_item"
+    android:background="@mipmap/bg_item_comment">
+
+    <ImageView
+        android:id="@+id/iv_avatar_comment"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_comment"
+       style="@style/TextViewCaption"
+        android:text="余文乐：我今晚也要去会会你"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"/>
+
+</LinearLayout>
