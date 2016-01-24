@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="学院"
+            android:text="班号"
             android:textSize="20sp" />
 
         <TextView
@@ -145,13 +145,14 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/et_info_academy"
+            android:id="@+id/et_info_classnumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:singleLine="true"
             android:background="@null"
-            android:hint="请输入学院名称"
+            android:inputType="number"
+            android:hint="请输入班号"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -405,7 +406,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/et_info_weichat"
+            android:id="@+id/et_info_wechat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"

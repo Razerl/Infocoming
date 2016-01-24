@@ -1,1 +1,1 @@
-include ':app', ':volley-1.0.19'
+include ':app', ':volley-1.0.19', ':gsondemo'

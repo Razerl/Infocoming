@@ -73,6 +73,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }else if(!isLogin){
             ToastUtils.showToast(this,"账号或密码错误，请重新尝试",0);
         }else {
+            //如果登陆成功返回班级号存入sharedpreference
             sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.putBoolean("isLOgin",true);

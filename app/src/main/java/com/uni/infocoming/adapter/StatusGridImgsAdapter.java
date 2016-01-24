@@ -10,11 +10,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
 import com.uni.infocoming.R;
-import com.uni.infocoming.widget.BitmapCache;
+import com.uni.infocoming.utils.ImageLoaderUtil;
 
 import java.util.ArrayList;
 
@@ -25,14 +22,10 @@ public class StatusGridImgsAdapter extends BaseAdapter{
 
     private Context context;
     private ArrayList<String> datas;
-    private RequestQueue queue;
-    private ImageLoader imageLoader;
 
     public StatusGridImgsAdapter(Context context, ArrayList<String> datas) {
         this.context = context;
         this.datas = datas;
-        RequestQueue queue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(queue,new BitmapCache());
     }
 
     @Override
@@ -72,9 +65,8 @@ public class StatusGridImgsAdapter extends BaseAdapter{
         holder.iv_image.setLayoutParams(params);
 
         String picUrl = getItem(position);
-        ImageLoader.ImageListener listener = imageLoader.getImageListener(holder.iv_image,R.mipmap.timeline_image_loading,
-                R.mipmap.timeline_image_failure);
-        imageLoader.get(picUrl,listener);
+        ImageLoaderUtil.setImageLoader(picUrl,holder.iv_image);
+
         return convertView;
     }
 

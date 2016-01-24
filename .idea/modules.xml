@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Infocoming.iml" filepath="$PROJECT_DIR$/Infocoming.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gsondemo/gsondemo.iml" filepath="$PROJECT_DIR$/gsondemo/gsondemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley-1.0.19/volley-1.0.19.iml" filepath="$PROJECT_DIR$/volley-1.0.19/volley-1.0.19.iml" />
     </modules>
   </component>

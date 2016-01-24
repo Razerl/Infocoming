@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.uni.infocoming"
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -22,5 +22,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
+    compile files('libs/gson-2.5.jar')
     compile project(':volley-1.0.19')
 }

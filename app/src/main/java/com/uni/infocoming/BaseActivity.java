@@ -8,13 +8,9 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
 import com.uni.infocoming.constants.CommonConstants;
 import com.uni.infocoming.utils.Logger;
 import com.uni.infocoming.utils.ToastUtils;
-import com.uni.infocoming.widget.BitmapCache;
 
 
 /**
@@ -26,8 +22,6 @@ public class BaseActivity extends Activity {
 
     protected BaseApplication application;
     protected SharedPreferences sp;
-    protected RequestQueue queue;
-    protected ImageLoader imageLoader;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -38,8 +32,6 @@ public class BaseActivity extends Activity {
 
         application = (BaseApplication) getApplication();
         sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
-        queue = Volley.newRequestQueue(this);
-        imageLoader = new ImageLoader(queue, new BitmapCache());
     }
 
     protected void intent2Activity(Class<? extends Activity> tarActivity) {

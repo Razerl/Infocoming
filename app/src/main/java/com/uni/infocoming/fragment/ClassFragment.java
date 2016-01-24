@@ -1,8 +1,10 @@
 package com.uni.infocoming.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,23 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 
+import com.android.volley.VolleyError;
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
+import com.google.gson.Gson;
 import com.uni.infocoming.BaseFragment;
 import com.uni.infocoming.R;
 import com.uni.infocoming.adapter.StatuesAdapter;
+import com.uni.infocoming.constants.CommonConstants;
+import com.uni.infocoming.constants.UrlConstants;
 import com.uni.infocoming.entity.Status;
 import com.uni.infocoming.utils.TitleBuilder;
+import com.uni.infocoming.utils.VolleyJsonArrayListenerInterface;
+import com.uni.infocoming.utils.VolleyRequestUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +47,13 @@ public class ClassFragment extends BaseFragment implements View.OnClickListener 
     private LinearLayout layout;
     private ListView lv_popupwindow_class;
     private PopupWindow popupWindow;
+
     private ListView lv_class;
+    private MaterialRefreshLayout refreshLayout;
+
+    private SharedPreferences sp;
+    String classNumber;
+    private String lastItemId;
 
     private StatuesAdapter adapter;
     private List<Status> statuses = new ArrayList<Status>();
@@ -41,16 +61,34 @@ public class ClassFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        sp = activity.getSharedPreferences(CommonConstants.SP_NAME, activity.MODE_PRIVATE);
+        classNumber = sp.getString("classNumber",null);
         initView();
+        loadData("0",classNumber);
 
         return view;
     }
 
     private void initView() {
         view = View.inflate(activity, R.layout.fragment_class,null);
+        refreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.refesh_class);
         lv_class = (ListView) view.findViewById(R.id.lv_class);
         adapter = new StatuesAdapter(activity,statuses);
         lv_class.setAdapter(adapter);
+
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                //下拉刷新。。
+                loadData("0",classNumber);
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                //上拉加载。。
+                loadData(lastItemId,classNumber);
+            }
+        });
 
         new TitleBuilder(view)
                 .setLeftImage(R.mipmap.logo)
@@ -58,6 +96,45 @@ public class ClassFragment extends BaseFragment implements View.OnClickListener 
                 .setRightImage(R.mipmap.ic_menu_add)
                 .setRightOnClickListener(this);
     }
+
+    //加载数据
+    private void loadData(final String lastItemId,String classNumber) {
+        Map<String,String> params = new HashMap<String, String>();
+        params.put("lastItemId",lastItemId);
+        params.put("classNumber",classNumber);
+        VolleyRequestUtil.RequestJsonArrayPost(activity, UrlConstants.RequestStatusUrl, "post", params,
+                new VolleyJsonArrayListenerInterface(activity,VolleyJsonArrayListenerInterface.mListener,VolleyJsonArrayListenerInterface.mErrorListener) {
+                    @Override
+                    public void onMySuccess(JSONArray result) {
+                        if(lastItemId.equals("0")) {
+                            statuses.clear();
+                        }
+                        JSONObject obj = new JSONObject();
+                        for (int i=0;i<result.length();i++){
+                            try {
+                                obj = result.getJSONObject(i);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            addData(new Gson().fromJson(obj.toString(),Status.class));
+
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onMyError(VolleyError error) {
+                        Log.e("TAG",error.getMessage(),error);
+
+                    }
+                });
+    }
+
+    private void addData(Status status) {
+        if(!statuses.contains(status)) {
+            statuses.add(status);
+        }
+}
 
     @Override
     public void onClick(View v) {
@@ -120,5 +197,4 @@ public class ClassFragment extends BaseFragment implements View.OnClickListener 
 
         return list;
     }
-
 }

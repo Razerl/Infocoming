@@ -6,14 +6,23 @@ package com.uni.infocoming.entity;
 public class User extends BaseEntity {
     private String university;//学校
     private String name;//姓名
-    private String id;//学号
-    private String acadamy;//学院
+    private String studentnumber;//学号
+    private String password;//密码
+    private String classnumber;//班号
     private String major;//专业
     private String duty;//职务
     private String tel;//手机号
     private String qq;//QQ号
     private String wechat;//微信号
     private String avatar;//头像地址
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getAvatar() {
         return avatar;
@@ -29,14 +38,6 @@ public class User extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setAcadamy(String acadamy) {
-        this.acadamy = acadamy;
     }
 
     public void setMajor(String major) {
@@ -67,13 +68,14 @@ public class User extends BaseEntity {
         return name;
     }
 
-    public String getId() {
-        return id;
+    public String getClassnumber() {
+        return classnumber;
     }
 
-    public String getAcadamy() {
-        return acadamy;
+    public void setClassnumber(String classnumber) {
+        this.classnumber = classnumber;
     }
+
 
     public String getMajor() {
         return major;
@@ -94,4 +96,13 @@ public class User extends BaseEntity {
     public String getWechat() {
         return wechat;
     }
+
+    public String getStudentnumber() {
+        return studentnumber;
+    }
+
+    public void setStudentnumber(String studentnumber) {
+        this.studentnumber = studentnumber;
+    }
+
 }

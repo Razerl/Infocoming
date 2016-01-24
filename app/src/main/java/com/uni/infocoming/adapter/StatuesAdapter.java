@@ -11,14 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
 import com.uni.infocoming.R;
 import com.uni.infocoming.entity.Comment;
 import com.uni.infocoming.entity.Status;
 import com.uni.infocoming.entity.User;
-import com.uni.infocoming.widget.BitmapCache;
+import com.uni.infocoming.utils.ImageLoaderUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +27,10 @@ public class StatuesAdapter extends BaseAdapter {
 
     private Context context;
     private List<Status> datas;
-    private RequestQueue queue;
-    private ImageLoader imageLoader;
 
     public StatuesAdapter(Context context ,List<Status> datas){
         this.context = context;
         this.datas = datas;
-        queue = Volley.newRequestQueue(context);
-        imageLoader = new ImageLoader(queue,new BitmapCache());
     }
 
     @Override
@@ -85,9 +78,8 @@ public class StatuesAdapter extends BaseAdapter {
         final Status status = getItem(position);
         final User user = status.getUser();
         //绑定顶部内容数据
-        ImageLoader.ImageListener listener = imageLoader.getImageListener(holder.iv_avatar_content,
-                R.mipmap.timeline_image_loading,R.mipmap.timeline_image_failure);
-        imageLoader.get(user.getAvatar(),listener);
+        ImageLoaderUtil.setImageLoader(user.getAvatar(),holder.iv_avatar_content);
+
         holder.tv_name.setText(user.getName());
         if(status.getPlace()!=null){
             holder.iv_locate.setVisibility(View.VISIBLE);
@@ -119,9 +111,7 @@ public class StatuesAdapter extends BaseAdapter {
             gv_images.setVisibility(View.GONE);
             iv_image.setVisibility(View.VISIBLE);
 
-            ImageLoader.ImageListener listener = ImageLoader.getImageListener(iv_image,
-                    R.mipmap.timeline_image_loading,R.mipmap.timeline_image_failure);
-            imageLoader.get(pic,listener);
+            ImageLoaderUtil.setImageLoader(pic,iv_image);
         } else {
             imgContainer.setVisibility(View.GONE);
         }
