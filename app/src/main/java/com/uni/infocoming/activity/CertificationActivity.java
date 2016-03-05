@@ -1,5 +1,6 @@
 package com.uni.infocoming.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -18,10 +19,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.uni.infocoming.BaseActivity;
-import com.uni.infocoming.BaseApplication;
 import com.uni.infocoming.R;
+import com.uni.infocoming.constants.CommonConstants;
 import com.uni.infocoming.constants.UrlConstants;
 import com.uni.infocoming.entity.User;
+import com.uni.infocoming.network.VolleyUtil;
 import com.uni.infocoming.utils.TitleBuilder;
 import com.uni.infocoming.utils.ToastUtils;
 
@@ -142,18 +144,24 @@ public class CertificationActivity extends BaseActivity implements View.OnClickL
         //验证职务是否符合
         else{
             gson = new Gson();
-            user.setAvatar("123");
             String jsonString = gson.toJson(user);
             try {
                 JSONObject obj = new JSONObject(jsonString);
-
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, UrlConstants.RequestLoginUrl, obj, new Response.Listener<JSONObject>() {
+                //存储User信息
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, UrlConstants.RequestCertificationUrl, obj, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         try {
                             String response = jsonObject.getString("register");
                             if(TextUtils.equals(response,"success")){
+                                ToastUtils.showToast(CertificationActivity.this,"认证成功!",0);
+                                SharedPreferences sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("studentNumber",user.getStudentnumber());
+                                editor.putString("classNumber",user.getClassnumber());
+                                editor.commit();
                                 intent2Activity(LoginActivity.class);
+
                             }else{
                                 ToastUtils.showToast(CertificationActivity.this,"认证失败！",0);
                             }
@@ -168,7 +176,7 @@ public class CertificationActivity extends BaseActivity implements View.OnClickL
                         Log.e("LOGIN-ERROR", new String(htmlBodyBytes), volleyError);
                     }
                 });
-                BaseApplication.getRequestQueue().add(request);
+                VolleyUtil.getRequestQueue().add(request);
 
             } catch (JSONException e) {
                 e.printStackTrace();

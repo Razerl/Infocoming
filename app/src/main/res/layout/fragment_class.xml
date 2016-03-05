@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.cjj.MaterialRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
-    android:id="@+id/refesh_class"
-    app:overlay="true"
-    app:wave_show="false"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <include layout="@layout/include_titlebar"/>
+
+    <com.uni.infocoming.widget.RefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_refresh_widget">
 
     <ListView
         android:id="@+id/lv_class"
@@ -19,4 +21,6 @@
         android:layout_height="wrap_content"
         android:dividerHeight="8dp"/>
 
-</com.cjj.MaterialRefreshLayout>
+    </com.uni.infocoming.widget.RefreshLayout>
+
+</LinearLayout>

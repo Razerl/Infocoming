@@ -7,15 +7,48 @@ import java.util.ArrayList;
  * 每条状态信息
  */
 public class Status extends BaseEntity {
+    private int id ;
     private String created_at;//创建时间
     private boolean isTop;//是否置顶
-    private String name;//姓名
+    private String studentNumber;//学号
     private String place;//发送地点
     private String text;//发送内容
-    private ArrayList<String> pic_urls;//图片集合
-    private String pic;//图片
+    private ArrayList<String> pic_url;//图片集合
     private ArrayList<Comment> comment_statu;//评论状态集合
     private User user;//User集合
+    private String classNumber;
+
+    @Override
+    public String toString() {
+        return "Status{" +
+                "id=" + id +
+                ", created_at='" + created_at + '\'' +
+                ", isTop=" + isTop +
+                ", studentNumber='" + studentNumber + '\'' +
+                ", place='" + place + '\'' +
+                ", text='" + text + '\'' +
+                ", pic_url=" + pic_url +
+                ", comment_statu=" + comment_statu +
+                ", user=" + user +
+                ", classNumber='" + classNumber + '\'' +
+                '}';
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCreated_at() {
         return created_at;
@@ -31,14 +64,6 @@ public class Status extends BaseEntity {
 
     public void setTop(boolean top) {
         isTop = top;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPlace() {
@@ -57,20 +82,12 @@ public class Status extends BaseEntity {
         this.text = text;
     }
 
-    public ArrayList<String> getPic_urls() {
-        return pic_urls;
+    public ArrayList<String> getPic_url() {
+        return pic_url;
     }
 
-    public void setPic_urls(ArrayList<String> pic_urls) {
-        this.pic_urls = pic_urls;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
+    public void setPic_url(ArrayList<String> pic_url) {
+        this.pic_url = pic_url;
     }
 
     public ArrayList<Comment> getComment_statu() {
@@ -87,5 +104,13 @@ public class Status extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getClassNumber() {
+        return classNumber;
+    }
+
+    public void setClassNumber(String classNumber) {
+        this.classNumber = classNumber;
     }
 }

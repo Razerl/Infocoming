@@ -27,6 +27,5 @@
         android:id="@+id/lv_comment"
         style="@style/ListViewCommon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/bg_comment"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

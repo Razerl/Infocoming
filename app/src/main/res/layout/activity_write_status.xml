@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_gray"
+    tools:context="com.uni.infocoming.activity.WriteStatus">
+
+    <include layout="@layout/include_titlebar"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_margin="15dp"
+        android:id="@+id/et_message"
+        android:background="@color/bg_gray_light"
+        android:scrollbars="vertical"
+        android:minLines="5"
+        android:gravity="top"
+        android:hint="跟同班同学分享下你的新鲜事吧~~" />
+
+    <RelativeLayout
+        android:id="@+id/rl_locate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_white2gray_sel">
+        <ImageView
+            android:id="@+id/iv_locate"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@mipmap/locate"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/tv_locate"
+            android:layout_toRightOf="@+id/iv_locate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:text="地理位置"
+            android:textSize="15sp"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消息置顶"
+            android:id="@+id/cb_isTop"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

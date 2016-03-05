@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:src="@mipmap/button_comment"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="4dp"/>
 

@@ -75,6 +75,7 @@ public class SplashActivity extends BaseActivity {
         if(sp.contains("isLogin")){
             isLogin = sp.getBoolean("isLogin",false);
         }else{
+            isLogin = false;
             editor.putBoolean("isLogin",false);
             editor.commit();
         }

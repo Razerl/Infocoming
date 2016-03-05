@@ -1,4 +1,4 @@
-package com.uni.infocoming.utils;
+package com.uni.infocoming.network;
 
 import android.content.Context;
 

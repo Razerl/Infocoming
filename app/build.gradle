@@ -4,6 +4,12 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     defaultConfig {
         applicationId "com.uni.infocoming"
         minSdkVersion 11
@@ -22,7 +28,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
     compile files('libs/gson-2.5.jar')
     compile project(':volley-1.0.19')
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.3@aar') {
+        transitive = true
+    }
+    compile files('libs/locSDK_6.22.jar')
 }

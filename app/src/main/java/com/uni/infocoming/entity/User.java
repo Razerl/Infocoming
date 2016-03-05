@@ -6,15 +6,32 @@ package com.uni.infocoming.entity;
 public class User extends BaseEntity {
     private String university;//学校
     private String name;//姓名
-    private String studentnumber;//学号
+    private String studentNumber;//学号
     private String password;//密码
-    private String classnumber;//班号
+    private String classNumber;//班号
     private String major;//专业
     private String duty;//职务
     private String tel;//手机号
     private String qq;//QQ号
     private String wechat;//微信号
     private String avatar;//头像地址
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "university='" + university + '\'' +
+                ", name='" + name + '\'' +
+                ", studentnumber='" + studentNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", classnumber='" + classNumber + '\'' +
+                ", major='" + major + '\'' +
+                ", duty='" + duty + '\'' +
+                ", tel='" + tel + '\'' +
+                ", qq='" + qq + '\'' +
+                ", wechat='" + wechat + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
 
     public String getPassword() {
         return password;
@@ -69,11 +86,11 @@ public class User extends BaseEntity {
     }
 
     public String getClassnumber() {
-        return classnumber;
+        return classNumber;
     }
 
     public void setClassnumber(String classnumber) {
-        this.classnumber = classnumber;
+        this.classNumber = classnumber;
     }
 
 
@@ -98,11 +115,11 @@ public class User extends BaseEntity {
     }
 
     public String getStudentnumber() {
-        return studentnumber;
+        return studentNumber;
     }
 
     public void setStudentnumber(String studentnumber) {
-        this.studentnumber = studentnumber;
+        this.studentNumber = studentnumber;
     }
 
 }

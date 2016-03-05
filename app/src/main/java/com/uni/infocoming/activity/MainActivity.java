@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import com.uni.infocoming.R;
 import com.uni.infocoming.fragment.FragmentController;
 
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
     private FragmentController controller;
     private RadioGroup rg_tab;
@@ -77,4 +77,5 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onDestroy();
         FragmentController.onDestroy();
     }
+
 }

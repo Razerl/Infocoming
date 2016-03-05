@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.uni.infocoming.constants.CommonConstants;
-import com.uni.infocoming.utils.Logger;
 import com.uni.infocoming.utils.ToastUtils;
 
 
@@ -44,6 +44,6 @@ public class BaseActivity extends Activity {
     }
 
     protected void showLog(String msg) {
-        Logger.show(TAG, msg);
+        Log.i(TAG, msg);
     }
 }

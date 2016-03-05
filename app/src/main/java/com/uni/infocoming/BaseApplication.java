@@ -1,25 +1,29 @@
 package com.uni.infocoming;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import com.uni.infocoming.network.VolleyUtil;
 
 /**
  * Created by Razer on 2015/12/21.
  */
 public class BaseApplication extends Application {
 
-    public static RequestQueue volleyQueue;
+    private Context mContext ;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        volleyQueue = Volley.newRequestQueue(getApplicationContext());
+        mContext = getApplicationContext() ;
+        initialize() ;
     }
 
-    // 开放Volley的HTTP请求队列接口
-    public static RequestQueue getRequestQueue() {
-        return volleyQueue;
+    private void initialize(){
+        initRequestQueue();
+    }
+
+    private void initRequestQueue(){
+        VolleyUtil.initialize(mContext);
     }
 }

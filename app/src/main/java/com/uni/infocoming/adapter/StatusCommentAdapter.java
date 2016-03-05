@@ -60,7 +60,7 @@ public class StatusCommentAdapter extends BaseAdapter{
         final User user = comment.getUser();
 
         ImageLoaderUtil.setImageLoader(user.getAvatar(),holder.iv_avatar_comment);
-        holder.tv_comment.setText(comment.getName()+":   "+comment.getText());
+        holder.tv_comment.setText(comment.getUser().getName()+":   "+comment.getText());
 
         return convertView;
     }

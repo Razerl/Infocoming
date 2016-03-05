@@ -1,6 +1,7 @@
 package com.uni.infocoming.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.uni.infocoming.R;
+import com.uni.infocoming.constants.UrlConstants;
 import com.uni.infocoming.entity.Comment;
 import com.uni.infocoming.entity.Status;
 import com.uni.infocoming.entity.User;
@@ -77,8 +79,10 @@ public class StatuesAdapter extends BaseAdapter {
         //绑定数据
         final Status status = getItem(position);
         final User user = status.getUser();
+
+        Log.i("TAG",status.toString());
         //绑定顶部内容数据
-        ImageLoaderUtil.setImageLoader(user.getAvatar(),holder.iv_avatar_content);
+        ImageLoaderUtil.setImageLoader(UrlConstants.BaseUrl+user.getAvatar(),holder.iv_avatar_content);
 
         holder.tv_name.setText(user.getName());
         if(status.getPlace()!=null){
@@ -96,22 +100,23 @@ public class StatuesAdapter extends BaseAdapter {
     }
 
     private void setImages(Status status, FrameLayout imgContainer, GridView gv_images, ImageView iv_image) {
-        ArrayList<String> pic_urls = status.getPic_urls();
-        String pic = status.getPic();
+        ArrayList<String> pic_url = status.getPic_url();
+        String pic ;
 
-        if(pic_urls != null && pic_urls.size() > 1) {
+        if(pic_url != null && pic_url.size() > 1) {
             imgContainer.setVisibility(View.VISIBLE);
             gv_images.setVisibility(View.VISIBLE);
             iv_image.setVisibility(View.GONE);
 
-            StatusGridImgsAdapter gvAdapter = new StatusGridImgsAdapter(context, pic_urls);
+            StatusGridImgsAdapter gvAdapter = new StatusGridImgsAdapter(context, pic_url);
             gv_images.setAdapter(gvAdapter);
-        } else if(pic != null) {
+        } else if(pic_url.size() == 1) {
+            pic = pic_url.get(0);
             imgContainer.setVisibility(View.VISIBLE);
             gv_images.setVisibility(View.GONE);
             iv_image.setVisibility(View.VISIBLE);
 
-            ImageLoaderUtil.setImageLoader(pic,iv_image);
+            ImageLoaderUtil.setImageLoader(UrlConstants.BaseUrl+pic,iv_image);
         } else {
             imgContainer.setVisibility(View.GONE);
         }

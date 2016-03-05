@@ -2,13 +2,91 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <include layout="@layout/include_titlebar"/>
 
-    <TextView
-        style="@style/TextViewSubhead"
-        android:text="我的"
-        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:background="@color/shadow_grey" />
+
+    <RelativeLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_avatar_me"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@mipmap/avatar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_name_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="路飞"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/md_grey_800"
+            android:layout_below="@id/iv_avatar_me"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btn_applytocommittee"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="申请成为班委"
+            android:textSize="13sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"/>
+        <Button
+            android:id="@+id/btn_quitcommittee"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:text="退出班委"
+            android:textSize="13sp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/btn_applytocommittee"
+            android:layout_marginBottom="2dp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:background="@color/shadow_grey" />
+    <View
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/white"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:background="@color/shadow_grey" />
+    <com.uni.infocoming.widget.WrapHeightListView
+        android:id="@+id/lv_me"
+        style="@style/ListViewCommon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/iv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/logout"/>
+
+
 </LinearLayout>

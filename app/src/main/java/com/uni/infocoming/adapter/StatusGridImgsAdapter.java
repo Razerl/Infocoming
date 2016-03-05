@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.uni.infocoming.R;
+import com.uni.infocoming.constants.UrlConstants;
 import com.uni.infocoming.utils.ImageLoaderUtil;
 
 import java.util.ArrayList;
@@ -65,8 +66,9 @@ public class StatusGridImgsAdapter extends BaseAdapter{
         holder.iv_image.setLayoutParams(params);
 
         String picUrl = getItem(position);
-        ImageLoaderUtil.setImageLoader(picUrl,holder.iv_image);
-
+        if(picUrl!=null){
+            ImageLoaderUtil.setImageLoader(UrlConstants.BaseUrl+picUrl,holder.iv_image);
+        }
         return convertView;
     }
 
